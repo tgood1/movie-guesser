@@ -3,22 +3,25 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import SearchBar from './SearchBar';
 import MovieGuessCard from './MovieGuessCard';
-import { useState, useEffect, useMemo, useRef } from 'react';
+import { useState, useEffect, useMemo, useRef, use } from 'react';
 import HowToPlay from './HowToPlay';
 import './App.css';
 import { Stack } from 'react-bootstrap';
 import { API_OPTIONS } from './apiConfig';
+import CorrectAnswer from './CorrectAnswer';
 
 function FormContainer() {
     const [guesses, setGuesses] = useState([]);
     const [answerKey, setAnswerKey] = useState([]);
     const [showHowToPlay, setShowHowToPlay] = useState(false);
+    const [gameOver, setGameOver] = useState(false);
+    const [wonGame, setWonGame] = useState(false);
     const movieDetailsCache = useRef({});
 
     const addGuess = async (guessMovieId) => {
         console.log("add guess!")
         if (!movieDetailsCache.current[guessMovieId]) {
-            
+
 
             try {
                 const response = await fetch(`https://api.themoviedb.org/3/movie/${guessMovieId}`, API_OPTIONS);
@@ -42,9 +45,19 @@ function FormContainer() {
                 return;
             }
         }
-
         setGuesses((prev) => [guessMovieId, ...prev]);
     };
+
+    useEffect(() => {
+        console.log(answerKey.id);
+        if (guesses.length && guesses[0] === answerKey.id) {
+            setWonGame(true);
+            setGameOver(true);
+        }
+        else if (guesses.length === 10) {
+            setGameOver(true);
+        }
+    }, [guesses, answerKey]);
 
 
     useEffect(() => {
@@ -63,11 +76,13 @@ function FormContainer() {
 
                 setAnswerKey({
                     title: detailsData.title,
+                    id: detailsData.id,
                     runtime: detailsData.runtime,
-                    fanRating: detailsData.vote_average,
+                    fanRating: detailsData.vote_average.toFixed(1),
                     genres: detailsData.genres,
                     cast: castData.cast.slice(0, 3),
-                    releaseYear: detailsData.release_date.slice(0, 4)
+                    releaseYear: detailsData.release_date.slice(0, 4),
+                    poster_path: detailsData.poster_path,
                 })
 
             } catch (error) {
@@ -90,7 +105,7 @@ function FormContainer() {
                     <Col className="d-flex justify-content-center">
                         <Stack direction="horizontal" gap={2} className="m-3">
                             <h1 >Movie Guessr</h1>
-                            <a href="#" onClick={() => setShowHowToPlay(true)} style={{ fontSize: '1.0rem' }}>
+                            <a href="#" onClick={() => setShowHowToPlay(true)} style={{ fontSize: '1.0rem' }} title="How to Play">
                                 <i className="bi bi-question-circle"></i>
                             </a>
 
@@ -99,7 +114,12 @@ function FormContainer() {
 
                 </Row>
                 <Row>
-                    <Col><SearchBar addGuess={addGuess} numGuesses={guesses.length}/></Col>
+                    <Col><SearchBar addGuess={addGuess} numGuesses={guesses.length} gameOver={gameOver} /></Col>
+                </Row>
+                <Row className="justify-content-center">
+                    <Col xs="auto">
+                        {gameOver ? <CorrectAnswer win={wonGame} answer={answerKey} /> : null}
+                    </Col>
                 </Row>
                 <Row className="justify-content-center">
                     <Col xs="auto">

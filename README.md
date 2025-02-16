@@ -12,6 +12,7 @@ Movie Guessr is a fun and interactive game where you have 10 tries to guess the 
 - **React.js**: Frontend library for building user interfaces.
 - **Bootstrap**: CSS framework for responsive design.
 - **React-Bootstrap**: Bootstrap components built with React.
+- **React-Boostrap-Typeahead**: 
 - **The Movie Database (TMDb) API**: Source for movie data.
 
 ## Demo
