@@ -32,7 +32,6 @@ function SearchBar({ addGuess, numGuesses, gameOver }) {
     const handleSubmit = async (event) => {
         event.preventDefault();
         await addGuess(selectedMovieId);
-        console.log('movie ID:', selectedMovieId);
         setSelectedMovieId(null);
         if (typeaheadRef.current) {
             typeaheadRef.current.clear();

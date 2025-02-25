@@ -15,8 +15,5 @@ Movie Guesser is a fun and interactive game where you have 10 tries to guess the
 - **React-Boostrap-Typeahead**: 
 - **The Movie Database (TMDb) API**: Source for movie data.
 
-## Demo
-
-
 ## Acknowledgements
 The Movie Database (TMDb) API for providing movie data.

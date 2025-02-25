@@ -19,7 +19,9 @@ function FormContainer() {
     const movieDetailsCache = useRef({});
 
     const addGuess = async (guessMovieId) => {
-        console.log("add guess!")
+        if (guesses.includes(guessMovieId)) { 
+            return
+        }
         if (!movieDetailsCache.current[guessMovieId]) {
 
 
@@ -49,7 +51,6 @@ function FormContainer() {
     };
 
     useEffect(() => {
-        console.log(answerKey.id);
         if (guesses.length && guesses[0] === answerKey.id) {
             setWonGame(true);
             setGameOver(true);
@@ -97,14 +98,13 @@ function FormContainer() {
             <MovieGuessCard key={guessMovieId} movieDetails={movieDetailsCache.current[guessMovieId]} answerKey={answerKey} />
         ));
     }, [guesses]);
-    console.log(answerKey)
     return (
         !showHowToPlay ? (
             <Container fluid>
                 <Row>
                     <Col className="d-flex justify-content-center">
                         <Stack direction="horizontal" gap={2} className="m-3">
-                            <h1 >Movie Guessr</h1>
+                            <h1 >Movie Guesser</h1>
                             <a href="#" onClick={() => setShowHowToPlay(true)} style={{ fontSize: '1.0rem' }} title="How to Play">
                                 <i className="bi bi-question-circle"></i>
                             </a>
