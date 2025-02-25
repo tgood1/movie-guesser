@@ -1,6 +1,6 @@
-# Movie Guessr
+# Movie Guesser
 
-Movie Guessr is a fun and interactive game where you have 10 tries to guess the secret movie. Each guess reveals the attributes of the movie you guessed, and the colors will indicate whether the attribute of the guess is the same or close to that of the secret movie.
+Movie Guesser is a fun and interactive game where you have 10 tries to guess the secret movie. Each guess reveals the attributes of the movie you guessed, and the colors will indicate whether the attribute of the guess is the same or close to that of the secret movie.
 
 ## Features
 - **Interactive Gameplay**: Guess the secret movie in 10 tries.
