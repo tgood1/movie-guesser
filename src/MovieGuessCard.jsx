@@ -11,7 +11,7 @@ import './App.css';
 function MovieGuessCard({ movieDetails, answerKey }) {
 
     return (
-        <Card style={{ width: '30rem' }} border="light" className="m-2 border-0">
+        <Card border="light" className="m-2 border-0 movie-guess-card">
             <Card.Body >
                 <Card.Title className="movie-title" style={{ fontSize: '2rem', fontWeight: 'bold' }}>{movieDetails.title}</Card.Title>
                 <div>
