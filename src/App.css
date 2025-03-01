@@ -16,8 +16,8 @@
   }
   
   .attribute-card-text {
-    font-size: 1.5rem;
-    font-weight: bold;
+    font-size: 1.5rem !important;
+    font-weight: bold !important;
   }
   
   img {
@@ -44,4 +44,62 @@
     padding-top: 0.1rem;
     padding-bottom: 0.1rem;
     text-align: center;
+  }
+
+  /* Card sizes */
+  .year-card {
+    width: 8rem;
+    padding: 0.1rem;
+  }
+
+  .runtime-card {
+    width: 9rem !important;
+    padding: 0.1rem !important;
+  }
+
+  .rating-card {
+    width: 8rem;
+    padding: 0.1rem;
+  }
+
+  .movie-guess-card {
+    width: 30rem;
+  }
+
+  /* Card body styles */
+  .attribute-card-body {
+    padding: 0.5rem !important;
+  }
+
+  .attribute-title{
+    font-size: 0.8rem !important;
+  }
+
+  .attribute-value {
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+
+  /* Search bar container */
+  .search-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 14vh;
+  }
+
+  .search-form-group {
+    width: 30rem;
+  }
+
+  /* How to play modal */
+  .help-modal {
+    width: 30rem;
+    position: relative;
+  }
+
+  .help-close-button {
+    position: absolute;
+    top: -1.5rem;
+    right: 0.5rem;
   }

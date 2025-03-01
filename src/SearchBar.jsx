@@ -41,8 +41,8 @@ function SearchBar({ addGuess, numGuesses, gameOver }) {
     const filterBy = () => true;
 
     return (
-        <Form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', height: '14vh' }}>
-            <Form.Group style={{ width: '30rem' }}>
+        <Form onSubmit={handleSubmit} className="search-container">
+            <Form.Group className="search-form-group">
                 <Form.Label>Guess {Math.min(numGuesses + 1, 10)} out of 10</Form.Label>
                 <Stack direction="horizontal" gap={3}>
                     <AsyncTypeahead
@@ -58,8 +58,6 @@ function SearchBar({ addGuess, numGuesses, gameOver }) {
                         placeholder="Guess a movie..."
                         style={{ width: '100%' }}
                     />
-
-
                     <input type="hidden" name="movieId" value={selectedMovieId || ''} />
                     <Button type="submit" variant="outline-primary" disabled={!selectedMovieId || gameOver}>Guess</Button>
                 </Stack>

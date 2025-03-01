@@ -13,10 +13,10 @@ function Runtime({ runtime, answerKey }) {
     }
     
     return (
-        <Card style={{ width: '9rem', padding: '0.1rem' }} bg={cardVariant} text={'white'} border={cardVariant} className="m-2">
-            <Card.Body className="d-flex flex-column justify-content-center align-items-center" style={{ padding: '0.5rem' }}>
-                <Card.Title style={{ fontSize: '0.8rem' }}>Runtime</Card.Title>
-                <Card.Text className="attribute-card-text" style={{ fontSize: '1.5rem', fontWeight: 'bold' }}>
+        <Card className="runtime-card m-2" bg={cardVariant} text={'white'} border={cardVariant}>
+            <Card.Body className="attribute-card-body d-flex flex-column justify-content-center align-items-center">
+                <Card.Title className="attribute-title">Runtime</Card.Title>
+                <Card.Text className="attribute-value">
                     {runtime} min
                     {diff > 0 && <i className="bi bi-caret-down-fill"></i>}
                     {diff < 0 && <i className="bi bi-caret-up-fill"></i>}
