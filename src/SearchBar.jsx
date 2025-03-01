@@ -16,7 +16,7 @@ function SearchBar({ addGuess, numGuesses, gameOver }) {
         fetch(`https://api.themoviedb.org/3/search/movie?query=${query}&include_adult=false&language=en-US&page=1`, API_OPTIONS)
             .then((resp) => resp.json())
             .then(({ results }) => {
-                setOptions(results);
+                setOptions(results.filter(result => result.vote_count > 0 && result.genre_ids.length > 0));
                 setIsLoading(false);
             });
     };
